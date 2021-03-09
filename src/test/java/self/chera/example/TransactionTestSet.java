@@ -1,16 +1,21 @@
 package self.chera.example;
 
 import lombok.Builder;
+import org.testng.ITest;
 import org.testng.annotations.Test;
 import self.chera.example.structures.Being;
 
 @Builder
-public class TransactionTestSet {
+public class TransactionTestSet extends TestMaster implements ITest {
     private final Being being;
-    @Builder.Default private final Evaluator transactionAStory = Evaluator.builder().build();
-    @Builder.Default private final Evaluator transactionBStory = Evaluator.builder().build();
-    @Builder.Default private final Evaluator transactionCStory = Evaluator.builder().build();
-    @Builder.Default private final Evaluator transactionPositiveStory = Evaluator.builder().build();
+    @Builder.Default
+    private final Evaluator transactionAStory = Evaluator.builder().build();
+    @Builder.Default
+    private final Evaluator transactionBStory = Evaluator.builder().build();
+    @Builder.Default
+    private final Evaluator transactionCStory = Evaluator.builder().build();
+    @Builder.Default
+    private final Evaluator transactionPositiveStory = Evaluator.builder().build();
 
     @Test
     void doTransactionA() {
@@ -51,5 +56,10 @@ public class TransactionTestSet {
         } catch (RuntimeException e) {
             transactionPositiveStory.exceptionHandler.accept(e);
         }
+    }
+
+    @Override
+    public String getTestName() {
+        return "Being " + being.value + " > " + testName.get();
     }
 }
