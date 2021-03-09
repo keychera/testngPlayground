@@ -18,7 +18,7 @@ public class Being {
         Optional<String> invokingMethodName = walker.walk(frames -> frames
                 .skip(1).findFirst()
                 .map(StackWalker.StackFrame::getMethodName));
-        System.out.println(invokingMethodName.orElse("[unknown trx]") + "is done!");
+        System.out.println(invokingMethodName.orElse("[unknown trx]") + " is done!");
     }
 
     public void doTransactionA() {

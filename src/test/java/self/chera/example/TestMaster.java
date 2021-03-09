@@ -10,4 +10,10 @@ public class TestMaster implements IHookable {
         System.out.println(testResult.getName());
         callBack.runTestMethod(testResult);
     }
+
+    public static void pass() {
+        System.out.println("Pass");
+    }
+
+
 }
