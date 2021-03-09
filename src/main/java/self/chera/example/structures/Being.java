@@ -1,6 +1,8 @@
 package self.chera.example.structures;
 
 
+import java.util.Optional;
+
 public class Being {
     public int value = 1;
 
@@ -11,6 +13,14 @@ public class Being {
         TransactionC can only be done value by more than 3
      */
 
+    private void printTransactionName() {
+        StackWalker walker = StackWalker.getInstance();
+        Optional<String> invokingMethodName = walker.walk(frames -> frames
+                .skip(1).findFirst()
+                .map(StackWalker.StackFrame::getMethodName));
+        System.out.println(invokingMethodName.orElse("[unknown trx]") + "is done!");
+    }
+
     public void doTransactionA() {
         if (value > 1) {
             if (value == 2) {
@@ -20,18 +30,28 @@ public class Being {
             } else {
                 throw new Exceptions.ExceptionTheRestDoingTransactionA();
             }
+        } else {
+            printTransactionName();
         }
     }
 
     public void doTransactionB() {
         if (value == 3) {
             throw new Exceptions.ExceptionThreeDoingTransactionB();
+        } else {
+            printTransactionName();
         }
     }
 
     public void doTransactionC() {
         if (value <= 3) {
             throw new Exceptions.ExceptionOneTwoThreeDoingTransactionC();
+        } else {
+            printTransactionName();
         }
+    }
+
+    public void doTransactionAlwaysPositive(){
+        printTransactionName();
     }
 }
