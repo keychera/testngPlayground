@@ -1,10 +1,13 @@
 package self.chera.example.structures;
 
 
+import lombok.Builder;
+
 import java.util.Optional;
 
+@Builder
 public class Being {
-    public int value = 1;
+    public int value;
 
     /*
         assume val > 0

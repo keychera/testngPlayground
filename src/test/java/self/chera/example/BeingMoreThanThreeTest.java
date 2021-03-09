@@ -10,13 +10,7 @@ import java.util.Random;
 import static org.testng.Assert.fail;
 
 public class BeingMoreThanThreeTest extends TestMaster {
-    Being being;
-
-    @BeforeClass
-    void createBeingToTest() {
-        being = new Being();
-        being.value = 4;
-    }
+    Being being = Being.builder().value(4).build();
 
     @Test
     void verifyTransactionA() {

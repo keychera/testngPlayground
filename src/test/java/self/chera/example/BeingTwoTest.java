@@ -1,6 +1,5 @@
 package self.chera.example;
 
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import self.chera.example.structures.Being;
 import self.chera.example.structures.Exceptions;
@@ -8,13 +7,7 @@ import self.chera.example.structures.Exceptions;
 import static org.testng.Assert.fail;
 
 public class BeingTwoTest extends TestMaster {
-    Being being;
-
-    @BeforeClass
-    void createBeingToTest() {
-        being = new Being();
-        being.value = 2;
-    }
+    Being being = Being.builder().value(2).build();
 
     @Test
     void verifyTransactionA() {

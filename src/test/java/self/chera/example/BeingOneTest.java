@@ -1,7 +1,6 @@
 package self.chera.example;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Factory;
 import org.testng.annotations.Test;
 import self.chera.example.structures.Being;
@@ -10,7 +9,7 @@ import self.chera.example.structures.Exceptions;
 import static org.testng.Assert.fail;
 
 public class BeingOneTest extends TestMaster {
-    Being being = new Being();
+    Being being = Being.builder().value(1).build();
 
     @Factory
     Object[] verifyAllTransactions() {
