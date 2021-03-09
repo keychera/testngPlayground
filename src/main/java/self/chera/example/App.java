@@ -1,4 +1,4 @@
-package org.example;
+package self.chera.example;
 
 /**
  * Hello world!
