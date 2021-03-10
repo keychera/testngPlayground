@@ -1,13 +1,14 @@
 package self.chera.example;
 
+import io.qameta.allure.testng.TestInstanceParameter;
 import lombok.Builder;
-import org.testng.ITest;
 import org.testng.annotations.Test;
 import self.chera.example.structures.Being;
 
 @Builder
-public class TransactionTestSet extends TestMaster implements ITest {
-    private final Being being;
+public class TransactionTestSet extends TestMaster {
+    @TestInstanceParameter("Being")
+    private final Being actor;
     @Builder.Default
     private final Evaluator transactionAStory = Evaluator.builder().build();
     @Builder.Default
@@ -20,7 +21,7 @@ public class TransactionTestSet extends TestMaster implements ITest {
     @Test
     void doTransactionA() {
         try {
-            being.doTransactionA();
+            actor.doTransactionA();
             transactionAStory.passingHandler.run();
         } catch (RuntimeException e) {
             transactionAStory.exceptionHandler.accept(e);
@@ -30,7 +31,7 @@ public class TransactionTestSet extends TestMaster implements ITest {
     @Test
     void doTransactionB() {
         try {
-            being.doTransactionB();
+            actor.doTransactionB();
             transactionBStory.passingHandler.run();
         } catch (RuntimeException e) {
             transactionBStory.exceptionHandler.accept(e);
@@ -41,7 +42,7 @@ public class TransactionTestSet extends TestMaster implements ITest {
     @Test
     void doTransactionC() {
         try {
-            being.doTransactionC();
+            actor.doTransactionC();
             transactionCStory.passingHandler.run();
         } catch (RuntimeException e) {
             transactionCStory.exceptionHandler.accept(e);
@@ -51,15 +52,10 @@ public class TransactionTestSet extends TestMaster implements ITest {
     @Test
     void doTransactionPositive() {
         try {
-            being.doTransactionAlwaysPositive();
+            actor.doTransactionAlwaysPositive();
             transactionPositiveStory.passingHandler.run();
         } catch (RuntimeException e) {
             transactionPositiveStory.exceptionHandler.accept(e);
         }
-    }
-
-    @Override
-    public String getTestName() {
-        return "Being " + being.value + " > " + testName.get();
     }
 }

@@ -9,6 +9,11 @@ import java.util.Optional;
 public class Being {
     public int value;
 
+    @Override
+    public String toString() {
+        return "Being " + value;
+    }
+
     /*
         assume val > 0
         TransactionA can only be done by value 1

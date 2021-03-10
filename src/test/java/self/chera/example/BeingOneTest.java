@@ -14,7 +14,7 @@ public class BeingOneTest extends TestMaster {
     @Factory
     Object[] verifyAllTransactions() {
         return new TransactionTestSet[]{TransactionTestSet.builder()
-                .being(being)
+                .actor(being)
                 .transactionAStory(Evaluator.builder()
                         .passingHandler(TestMaster::pass)
                         .build())
