@@ -2,17 +2,14 @@ package self.chera.example.structures;
 
 
 import lombok.Builder;
+import lombok.ToString;
 
 import java.util.Optional;
 
+@ToString
 @Builder
 public class Being {
     public int value;
-
-    @Override
-    public String toString() {
-        return "Being " + value;
-    }
 
     /*
         assume val > 0

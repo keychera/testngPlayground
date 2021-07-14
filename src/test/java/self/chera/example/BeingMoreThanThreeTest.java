@@ -1,11 +1,8 @@
 package self.chera.example;
 
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import self.chera.example.structures.Being;
 import self.chera.example.structures.Exceptions;
-
-import java.util.Random;
 
 import static org.testng.Assert.fail;
 
